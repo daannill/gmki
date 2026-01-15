@@ -46,10 +46,24 @@
 <nav class="nav">
   <div class="brand">GMKI</div>
   <div class="links">
-    <a href="home.php">Home</a>
-    <a href="jadwal.php">E-Learning</a>
+    <a href="./">Home</a>
+    <a href="./learning.php">E-Learning</a>
     <a href="renungan.php">Beasiswa</a>
-    <a href="/login.php" class="btn">Login</a>
+
+    <?php if(isset($_SESSION['role']) && $_SESSION['role'] !== 'user') {?>
+      <?php if($_SESSION['role'] === 'admin') { ?>
+        <a href="./admin/index.php">Admin</a>
+      <?php } ?>
+      <?php if($_SESSION['role'] === 'instructor') { ?>
+        <a href="./instructor/index.php">POST</a>
+      <?php } ?>
+    <?php }?>
+
+    <?php if (isset($_SESSION['user_id'])) { ?>
+      <a href="./logout.php" class="btn">Logout</a>
+    <?php } else { ?>
+      <a href="./login.php" class="btn">Login</a>
+    <?php } ?>
   </div>
 </nav>
 

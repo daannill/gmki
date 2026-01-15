@@ -1,84 +1,41 @@
+<?php
+  require_once "./config/koneksi.php";
+  require_once "./backend/login_logic.php";
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login Page</title>
-<style>
-  body {
-    margin: 0;
-    background: #f0f2f5;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-
-  .login-box {
-    width: 320px;
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .input-group {
-    margin-bottom: 12px;
-  }
-
-  .input-group label {
-    font-size: 14px;
-    display: block;
-    margin-bottom: 5px;
-  }
-
-  .input-group input {
-    width: 93%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background: #2c3e50;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 15px;
-  }
-
-  button:hover {
-    background: #34495e;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
 
 <div class="login-box">
   <h2>Login</h2>
+  <?php
+    if($error) {
+      echo "$error";
+    }
+  ?>
 
-  <form>
+  <form method="POST">
     <div class="input-group">
       <label>Username</label>
-      <input type="text" required>
+      <input type="text" name="username" required>
     </div>
 
     <div class="input-group">
       <label>Password</label>
-      <input type="password" required>
+      <input type="password" name="password" required>
     </div>
 
-    <button>Login</button>
+    <button type="submit">Login</button>
   </form>
+
+  <a href="../gmki"><button style="margin-top: 5px;">Back</button></a>
 </div>
 
 </body>
